@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 use App\Models\Type;
 
 class TypeSeeder extends Seeder
@@ -17,7 +17,7 @@ class TypeSeeder extends Seeder
 
         $types = ['html','css','javascript','vue','laravel'];
 
-        DB::table('types')->truncate();
+        // DB::table('types')->truncate();
 
         foreach ($types as $type) {
 

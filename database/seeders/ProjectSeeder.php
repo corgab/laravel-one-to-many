@@ -28,6 +28,7 @@ class ProjectSeeder extends Seeder
             $new_project->end_date = $faker->date();
             $new_project->project_url = $faker->unique()->url();
             $new_project->technologies_used = $faker->name();
+            // $new_project->type_id = rand(1,5);
 
             $new_project->save();
 
