@@ -17,4 +17,8 @@ class Project extends Model
         'project_url',
         'technologies_used'
     ];
+
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }
