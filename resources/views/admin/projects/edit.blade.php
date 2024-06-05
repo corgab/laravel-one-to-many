@@ -33,8 +33,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="technologies_used" class="form-label">Tecnologie utilizzate</label>
-            <input type="text" class="form-control" id="technologies_used" name="technologies_used" value="{{old('technologies_used', $project->technologies_used)}}">
+            <label for="type_id" class="form-label">Tecnologie utilizzate</label>
+            <select name="type_id" id="type_id" class="form-control">
+                <option value="">Seleziona il tipo</option>
+                @foreach($types as $type)
+                    <option @selected( $type->id == old('type_id', $project->type_id) ) value="{{ $type->id }}">{{ $type->title }}</option>
+                @endforeach
+            </select>
         </div>
         
         <button type="submit" class="btn btn-success btn-lg">Modifica</button>

@@ -11,8 +11,8 @@
       <tr>
         <th scope="col">Titolo</th>
         <th scope="col">Descrizione</th>
-        <th scope="col">Data inizio</th>
-        <th scope="col">Data fine</th>
+        {{-- <th scope="col">Data inizio</th>
+        <th scope="col">Data fine</th> --}}
         <th scope="col">Url Progetto</th>
         <th scope="col">Tecnologie</th>
         <th scope="col">Azioni</th>
@@ -25,10 +25,10 @@
       <tr>
         <td>{{ $project->title }}</td>
         <td>{{ $project->description }}</td>
-        <td>{{ $project->start_date }}</td>
-        <td>{{ $project->end_date }}</td>
+        {{-- <td>{{ $project->start_date }}</td>
+        <td>{{ $project->end_date }}</td> --}}
         <td>{{ $project->project_url }}</td>
-        <td>{{ $project->technologies_used }}</td>
+        <td>{{ optional($project->type)->title }}</td>
         <td>
           <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary">Visualizza</a>
         </td>

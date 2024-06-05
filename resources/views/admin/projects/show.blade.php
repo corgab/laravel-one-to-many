@@ -4,12 +4,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th>title</th>
-                <th>description</th>
-                <th>start_date</th>
-                <th>end_date</th>
-                <th>project_url</th>
-                <th>techonologies_used</th>
+                <th scope="col">Titolo</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Data inizio</th>
+                <th scope="col">Data fine</th>
+                <th scope="col">Url Progetto</th>
+                <th scope="col">Tecnologie</th>
+                <th scope="col">Azioni</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +22,7 @@
                 <td>{{ $project->start_date }}</td>
                 <td>{{ $project->end_date }}</td>
                 <td>{{ $project->project_url }}</td>
-                <td>{{ $project->technologies_used }}</td>
+                <td>{{ optional($project->type)->title }}</td>
             </tr>
         </tbody>
     </table>
