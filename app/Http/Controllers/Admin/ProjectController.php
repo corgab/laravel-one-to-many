@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -37,15 +39,33 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|max:255|unique:projects',
+            'title' => 'required|max:150|string',
             'description'=>'max:65000',
-            'start_date'=>'required|date',
-            'end_date'=>'required|date',
+            'start_date'=>'date',
+            'end_date'=>'date',
             'project_url'=>'required|url|unique:projects',
-            'type_id'=>'required|exists:types,id'
+            'type_id'=>'required|exists:types,id',
+            
         ]);
 
         $form_data = $request->all();
+        $base_slug = Str::slug($form_data['title']);
+        $slug = $base_slug;
+
+        $n = 0;
+
+        do {
+
+            $find = Project::where('slug', $slug)->first();
+
+            if($find !== null) {
+                $n++;
+                $slug = $base_slug . '-'.$n;
+            }
+
+        } while($find !== null);
+
+        $form_data['slug'] = $slug;
 
         $new_project = Project::create($form_data);
 
@@ -79,6 +99,7 @@ class ProjectController extends Controller
     {
         $request->validate([
             'title'=>'required|max:255',
+            'slug'=>['required', Rule::unique('projects')->ignore($project->id)],
             'description'=>'max:65000',
             'start_date'=>'date',
             'end_date'=>'date',

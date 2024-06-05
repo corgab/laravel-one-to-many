@@ -13,6 +13,11 @@
         </div>
 
         <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug" value="{{old('slug', $project->slug)}}">
+        </div>
+
+        <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
             <input type="text" class="form-control" id="description" name="description" value="{{old('description', $project->description)}}">
         </div>
