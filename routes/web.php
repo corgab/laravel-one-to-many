@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\ProjectController as PublicProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('projects', PublicProjectController::class)->only(['index', 'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,10 +39,6 @@ Route::middleware(['auth', 'verified'])
 
     Route::resource('projects', ProjectController::class);
 
-
 });
-
-
-
 
 require __DIR__.'/auth.php';
