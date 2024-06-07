@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 // use Illuminate\Support\Facades\DB;
 use App\Models\Type;
 
+
 class TypeSeeder extends Seeder
 {
     /**
@@ -15,7 +16,7 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
 
-        $types = ['html','css','javascript','vue','laravel'];
+        $types = ['FrontEnd', 'Backend', 'FullStack', 'Design', 'DevOps'];
 
         // DB::table('types')->truncate();
 
